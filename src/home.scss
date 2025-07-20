@@ -1,0 +1,213 @@
+.app {
+  position: relative;
+  z-index: 10;
+  isolation: isolate; // Bu da stacking context yarat
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  padding: 5rem 1.5rem 3rem;
+  color: white;
+  text-align: center;
+  transition: background 0.4s ease;
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  opacity: 0.7;
+  margin-bottom: 2rem;
+}
+
+.mood-buttons {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+  z-index: 999;
+
+  .mood-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.6rem;
+    font-weight: bold;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &.active {
+      box-shadow: 0 0 10px #fff5;
+    }
+  }
+}
+
+.radio-card {
+  position: relative;
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 2px solid;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  max-width: 500px;
+  margin: 0 auto;
+  transition: 0.3s ease;
+  z-index: 9;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: -70%;
+    left: -50%;
+    width: 80vw;
+    height: 60dvh;
+    border-radius: 1.5rem;
+    background: url("./assets/shine.png");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5;
+    z-index: -1; // Ensure it stays behind content
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .quote {
+    font-style: italic;
+    opacity: 0.85;
+    margin-bottom: 1.5rem;
+  }
+
+  .controls {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+
+    button {
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+
+      &:hover {
+        transform: scale(1.15);
+      }
+    }
+  }
+
+  .time-slider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 8px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      outline: none;
+      transition: background 0.3s;
+
+      // Track
+      &::-webkit-slider-runnable-track {
+        height: 8px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      // Thumb (handle)
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: currentColor; // will match mood color
+        box-shadow: 0 0 6px currentColor;
+        margin-top: -4px; // center thumb
+        cursor: pointer;
+        border: none;
+      }
+
+      // Firefox support
+      &::-moz-range-track {
+        height: 8px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      &::-moz-range-thumb {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: currentColor;
+        box-shadow: 0 0 6px currentColor;
+        border: none;
+      }
+    }
+
+    span {
+      font-size: 0.7rem;
+      min-width: 40px;
+    }
+  }
+}
+
+/* From Uiverse.io by barisdogansutcu */
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: #7e97b8;
+  background-color: #e0e8ef;
+  border-style: solid;
+  border-width: 2px 2px 2px 2px;
+  border-color: rgba(255, 255, 255, 0.333);
+  border-radius: 40px 40px 40px 40px;
+  padding: 12px 24px 12px 28px;
+  margin-bottom: 2rem;
+  transform: translate(0px, 0px) rotate(0deg);
+  transition: 0.2s;
+  box-shadow: -4px -2px 16px 0px #ffffff, 4px 2px 16px 0px rgb(95 157 231 / 48%);
+}
+
+.button:hover {
+  color: #516d91;
+  background-color: #e5edf5;
+  box-shadow: -2px -1px 8px 0px #ffffff, 2px 1px 8px 0px rgb(95 157 231 / 48%);
+}
+
+.button:active {
+  box-shadow: none;
+}
+
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100dvh;
+  background: url("./assets/flow.gif");
+  background-size: 100% 500px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
