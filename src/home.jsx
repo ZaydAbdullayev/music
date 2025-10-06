@@ -11,6 +11,11 @@ import "./home.scss";
 import { moods } from "./context/data";
 import { RiTwitterXFill } from "react-icons/ri";
 
+const env = window.ENV || {
+  TITLE: "Mood Broadcast",
+  X_LINK: "https://twitter.com/moodbroadcast",
+};
+
 export function App() {
   const [moodKey, setMoodKey] = useState("calm");
   const [trackIndex, setTrackIndex] = useState(0);
@@ -41,10 +46,13 @@ export function App() {
 
   return (
     <div className="app" style={{ background: mood?.gradient || "#1a202c" }}>
-      <h1 className="title">Mood Broadcast</h1>
+      <h1 className="title">{env.TITLE}</h1>
       <p className="subtitle">Choose your vibe, and let it play.</p>
       <div className="df aic jcc">
-        <button className="button">
+        <button
+          className="button"
+          onClick={() => window.open(env.X_LINK, "_blank")}
+        >
           <RiTwitterXFill className="fs-18" />
           Follow Us
         </button>
